@@ -1,0 +1,24 @@
+
+<div class="container role">
+  <p class="orange-text text-lighten-1 flow-text">Role</p>
+  <div class="row">
+
+      <table class="highlight bordered center">
+        <tr>
+          <label><td><%= "User Name" %></td></label>
+          <td><%= @role.user.try(:name) %></td>
+        </tr>
+        <tr>
+          <label><td><%= "Action Type" %></td></label>
+          <td><%= ActionType.access_type_map[@role.action_type_id] %></td>
+        </tr>
+        <tr>
+          <label><td><%= "Resource" %></td></label>
+          <td><%= @role.resource.try(:name) %></td>
+        </tr>
+      </table>
+  </div>
+  <div>
+    <%= link_to "Go Back", roles_path(), class: "btn btn-primary" %>
+  </div>
+</div>

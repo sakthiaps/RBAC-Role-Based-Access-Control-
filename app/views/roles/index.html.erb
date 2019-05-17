@@ -1,0 +1,27 @@
+<div class="container role">
+  <p class="orange-text text-lighten-1 flow-text"> Role </p>
+  <p>
+    <a href="/roles/new" class="btn btn-primary">New</a>
+    <a href="#" data-grid-name="g1" class="btn btn-success wg-external-submit-button">Search</a>
+    <a href="#" data-grid-name="g1" class="btn wg-external-reset-button">Reset</a>
+    <a href="/roles/access" class="btn btn-primary">Check Access</a>
+  </p>
+  <%= grid(@role_lists_grid, show_filters: :always) do |g|
+
+    g.column name: 'User Name', assoc: :user, attribute: 'name' do |role|
+      role.user.try(:name)
+    end
+    g.column name: 'Action Type', attribute: 'action_type_id' do |role|
+      ActionType.access_type_map[role.action_type_id]
+    end
+    g.column name: 'Resource', assoc: :resource, attribute: 'name' do |role|
+      role.resource.try(:name)
+    end
+
+    g.column do |plane|
+      link_to('View', role_path(plane)) + " " +
+          link_to('Edit', edit_role_path(plane)) + " " +
+            link_to('Delete', role_path(plane), :method => 'delete')
+    end
+  end -%>
+</div>

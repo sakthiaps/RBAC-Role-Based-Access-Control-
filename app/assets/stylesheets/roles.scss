@@ -1,0 +1,11 @@
+select {
+  display: inline;
+}
+
+.role.container {
+  min-height: 23em;
+  width: 35% !important;
+}
+.field_with_errors input{
+  border: 1px solid red !important;
+}

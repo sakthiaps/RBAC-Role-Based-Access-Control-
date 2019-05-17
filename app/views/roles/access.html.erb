@@ -1,0 +1,31 @@
+<div class="container role">
+  <p class="orange-text text-lighten-1 flow-text"> Role Authentication details </p>
+  <%= form_tag(access_roles_path, :method => :get , html: {class: "form-horizontal"}) do  %>
+    <fieldset>
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">User Name</label>
+        <div class="col-sm-6">
+          <%= select_tag :user_id, options_for_select(User.all.map{|user| [user.name, user.id]}, '') %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Action Type</label>
+        <div class="col-sm-6">
+          <%= select_tag :action_type_id, options_for_select(ActionType.access_type_map.invert.to_a, '') %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Resource</label>
+        <div class="col-sm-6">
+          <%= select_tag :resource_id, options_for_select(Resource.all.map{|resource| [resource.name, resource.id]}, '') %>
+        </div>
+      </div>
+      <div class="form_actions">
+        <%= submit_tag("Submit", :class => 'button') %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
+
